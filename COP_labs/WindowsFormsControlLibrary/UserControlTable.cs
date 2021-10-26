@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsControlLibrary.BindingModel;
+using System.Reflection;
 
 namespace WindowsFormsControlLibrary
 {
