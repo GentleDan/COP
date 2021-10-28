@@ -1,14 +1,11 @@
-﻿using ClassLibraryComponentsFilippov.HelperModels;
+﻿using ClassLibraryControlsFilippov;
 using FurnitureFactoryBusinessLogic.BindingModels;
 using FurnitureFactoryBusinessLogic.BusinessLogic;
-using FurnitureFactoryBusinessLogic.ViewModels;
 using FurnitureFactoryBusinessLogic.HelperModels;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Unity;
-using ClassLibraryControlsFilippov;
-using System.Linq;
 
 namespace FurnitureFactoryView
 {
@@ -18,11 +15,11 @@ namespace FurnitureFactoryView
         public new IUnityContainer Container { get; set; }
         private readonly SupplierLogic _supplierLogic;
         private readonly ReportLogic _reportLogic;
-        private ControlOutputListBoxLayout layout = new ControlOutputListBoxLayout
+        private readonly ControlOutputListBoxLayout layout = new ControlOutputListBoxLayout
         {
             EndSign = '}',
             StartSign = '{',
-            Layout = "Название - {Name}, Идентификатор - {Id}, Дата поставки - {DeliveryDate}, ФИО менеджера - {ManagerFullName}, Частота поставок - {DeliveryFrequency}"
+            Layout = "Название - {Name}; Идентификатор - {Id}; Дата поставки - {DeliveryDate}; ФИО менеджера - {ManagerFullName}; Частота поставок - {DeliveryFrequency}"
         };
 
         public FormMain(SupplierLogic supplierLogic, ReportLogic reportLogic)
@@ -80,7 +77,11 @@ namespace FurnitureFactoryView
         private void UpdateSupplier(object sender, EventArgs e)
         {
             var selectedItem = controlOutputlListBox.GetSelectedItem<SupplierStringModel>();
-            if (selectedItem is null || string.IsNullOrEmpty(selectedItem.Name) || selectedItem.Id is null) return;
+            if (selectedItem is null || string.IsNullOrEmpty(selectedItem.Name) || selectedItem.Id is null)
+            {
+                return;
+            }
+
             var form = Container.Resolve<FormSupplier>();
             form.SupplierStringModel = selectedItem;
             if (form.ShowDialog() == DialogResult.OK)
@@ -91,7 +92,10 @@ namespace FurnitureFactoryView
         private void DeleteSupplier(object sender, EventArgs e)
         {
             var selectedItem = controlOutputlListBox.GetSelectedItem<SupplierStringModel>();
-            if (selectedItem is null || string.IsNullOrEmpty(selectedItem.Name) || selectedItem.Id is null) return;
+            if (selectedItem is null || string.IsNullOrEmpty(selectedItem.Name) || selectedItem.Id is null)
+            {
+                return;
+            }
 
             if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) == DialogResult.Yes)
@@ -113,5 +117,23 @@ namespace FurnitureFactoryView
             var form = Container.Resolve<FormManagers>();
             form.ShowDialog();
         }
+
+        private void CreateSimpleDocument(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CreateDocumentTable(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CreateDocumentChart(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
+

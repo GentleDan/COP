@@ -117,6 +117,39 @@ namespace FurnitureFactoryView
             Close();
         }
 
+        private bool CloseWindow()
+        {
+            bool result = true;
+            if (Save) return result;
+            var name = textBoxName.Text;
+            var deliveryDate = dateTimePickerDelivery.Text;
+            var managerName = userControlListManagerName.SelectedItem;
+            int deliveryFrequency;
+            try
+            {
+                deliveryFrequency = (int) inputUserControlFrequency.Value;
+            }
+            catch (Exception)
+            { }
+            if (MessageBox.Show("Данные не сохранены", "Выйти?", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) != DialogResult.Yes)
+                {
+                    result = false;
+                }
+            return result;
+        }
+
+
+        private void FormSupplier_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!CloseWindow())
+            {
+                e.Cancel = true;
+                DialogResult = DialogResult.Cancel;
+                return;
+            }
+        }
+
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Close();

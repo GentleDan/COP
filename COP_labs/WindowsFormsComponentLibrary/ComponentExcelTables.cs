@@ -110,6 +110,36 @@ namespace WindowsFormsComponentLibrary
                                 Text = data[i, j],
                                 StyleIndex = 0U
                             });
+                            j++;
+                            InsertCellInWorksheet(new ExcelCellParameters
+                            {
+                                Worksheet = worksheetPart.Worksheet,
+                                ShareStringPart = shareStringPart,
+                                ColumnName = "C",
+                                RowIndex = rowIndex,
+                                Text = data[i, j],
+                                StyleIndex = 0U
+                            });
+                            j++;
+                            InsertCellInWorksheet(new ExcelCellParameters
+                            {
+                                Worksheet = worksheetPart.Worksheet,
+                                ShareStringPart = shareStringPart,
+                                ColumnName = "D",
+                                RowIndex = rowIndex,
+                                Text = data[i, j],
+                                StyleIndex = 0U
+                            });
+                            j++;
+                            InsertCellInWorksheet(new ExcelCellParameters
+                            {
+                                Worksheet = worksheetPart.Worksheet,
+                                ShareStringPart = shareStringPart,
+                                ColumnName = "E",
+                                RowIndex = rowIndex,
+                                Text = data[i, j],
+                                StyleIndex = 0U
+                            });
                             rowIndex++;
                         }
                     }
