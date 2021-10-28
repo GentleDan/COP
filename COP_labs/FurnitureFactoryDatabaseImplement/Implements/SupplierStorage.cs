@@ -20,7 +20,7 @@ namespace FurnitureFactoryDatabaseImplement.Implements
                     Id = rec.Id,
                     Name = rec.Name,
                     ManagerFullName = rec.ManagerFullName,
-                    DeliveryDate = rec.DeliveryDate.ToString(),
+                    DeliveryDate = rec.DeliveryDate.ToString("dd.MM.yyyy"),
                     DeliveryFrequency = rec.DeliveryFrequency,
                 })
                 .ToList();
@@ -42,7 +42,7 @@ namespace FurnitureFactoryDatabaseImplement.Implements
                     Id = rec.Id,
                     Name = rec.Name,
                     ManagerFullName = rec.ManagerFullName,
-                    DeliveryDate = rec.DeliveryDate.ToString(),
+                    DeliveryDate = rec.DeliveryDate.ToString("dd.MM.yyyy"),
                     DeliveryFrequency = rec.DeliveryFrequency
                 })
                 .ToList();
@@ -65,7 +65,7 @@ namespace FurnitureFactoryDatabaseImplement.Implements
                     Id = supplier.Id,
                     Name = supplier.Name,
                     ManagerFullName = supplier.ManagerFullName,
-                    DeliveryDate = supplier.DeliveryDate.ToString(),
+                    DeliveryDate = supplier.DeliveryDate.ToString("dd.MM.yyyy"),
                     DeliveryFrequency = supplier.DeliveryFrequency
                 };
             }
