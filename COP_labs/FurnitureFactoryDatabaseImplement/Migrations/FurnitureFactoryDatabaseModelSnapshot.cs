@@ -42,9 +42,6 @@ namespace FurnitureFactoryDatabaseImplement.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DeliveryDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("DeliveryFrequency")
                         .HasColumnType("int");
 
@@ -59,6 +56,36 @@ namespace FurnitureFactoryDatabaseImplement.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Suppliers");
+                });
+
+            modelBuilder.Entity("FurnitureFactoryDatabaseImplement.Models.SupplierDates", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DeliveryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("SupplierDateId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SupplierDateId");
+
+                    b.ToTable("SupplierDates");
+                });
+
+            modelBuilder.Entity("FurnitureFactoryDatabaseImplement.Models.SupplierDates", b =>
+                {
+                    b.HasOne("FurnitureFactoryDatabaseImplement.Models.Supplier", "Supplier")
+                        .WithMany("SupplierDates")
+                        .HasForeignKey("SupplierDateId");
                 });
 #pragma warning restore 612, 618
         }

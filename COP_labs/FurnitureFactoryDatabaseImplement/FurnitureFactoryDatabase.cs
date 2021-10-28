@@ -16,5 +16,6 @@ namespace FurnitureFactoryDatabaseImplement
         }
         public virtual DbSet<Supplier> Suppliers { set; get; }
         public virtual DbSet<Manager> Managers { set; get; }
+        public virtual DbSet<SupplierDates> SupplierDates { get; set; }
     }
 }

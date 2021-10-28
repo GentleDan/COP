@@ -34,32 +34,38 @@
             this.labelName = new System.Windows.Forms.Label();
             this.labelDateDelivery = new System.Windows.Forms.Label();
             this.labelFrequency = new System.Windows.Forms.Label();
-            this.userControlListManagerName = new WindowsFormsControlLibrary.UserControlList();
             this.labelManagerName = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.listBoxDates = new System.Windows.Forms.ListBox();
+            this.buttonAddDate = new System.Windows.Forms.Button();
+            this.userControlListManagerName = new WindowsFormsControlLibrary.UserControlList();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxName
             // 
-            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxName.Location = new System.Drawing.Point(12, 48);
+            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxName.Location = new System.Drawing.Point(12, 30);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(200, 20);
+            this.textBoxName.Size = new System.Drawing.Size(239, 20);
             this.textBoxName.TabIndex = 0;
             // 
             // dateTimePickerDelivery
             // 
-            this.dateTimePickerDelivery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePickerDelivery.Location = new System.Drawing.Point(12, 104);
+            this.dateTimePickerDelivery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerDelivery.Location = new System.Drawing.Point(12, 75);
             this.dateTimePickerDelivery.Name = "dateTimePickerDelivery";
-            this.dateTimePickerDelivery.Size = new System.Drawing.Size(126, 20);
+            this.dateTimePickerDelivery.Size = new System.Drawing.Size(165, 20);
             this.dateTimePickerDelivery.TabIndex = 1;
             // 
             // inputUserControlFrequency
             // 
-            this.inputUserControlFrequency.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputUserControlFrequency.Location = new System.Drawing.Point(12, 387);
+            this.inputUserControlFrequency.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputUserControlFrequency.Location = new System.Drawing.Point(12, 451);
             this.inputUserControlFrequency.Max = new decimal(new int[] {
             12,
             0,
@@ -71,14 +77,15 @@
             0,
             0});
             this.inputUserControlFrequency.Name = "inputUserControlFrequency";
-            this.inputUserControlFrequency.Size = new System.Drawing.Size(61, 25);
+            this.inputUserControlFrequency.Size = new System.Drawing.Size(100, 25);
             this.inputUserControlFrequency.TabIndex = 3;
             // 
             // labelName
             // 
-            this.labelName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(13, 29);
+            this.labelName.Location = new System.Drawing.Point(9, 8);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(60, 13);
             this.labelName.TabIndex = 4;
@@ -86,38 +93,33 @@
             // 
             // labelDateDelivery
             // 
-            this.labelDateDelivery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelDateDelivery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelDateDelivery.AutoSize = true;
-            this.labelDateDelivery.Location = new System.Drawing.Point(12, 85);
+            this.labelDateDelivery.Location = new System.Drawing.Point(12, 59);
             this.labelDateDelivery.Name = "labelDateDelivery";
             this.labelDateDelivery.Size = new System.Drawing.Size(86, 13);
             this.labelDateDelivery.TabIndex = 5;
             this.labelDateDelivery.Text = "Дата поставки:";
+            this.labelDateDelivery.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelFrequency
             // 
-            this.labelFrequency.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelFrequency.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelFrequency.AutoSize = true;
-            this.labelFrequency.Location = new System.Drawing.Point(13, 371);
+            this.labelFrequency.Location = new System.Drawing.Point(9, 435);
             this.labelFrequency.Name = "labelFrequency";
             this.labelFrequency.Size = new System.Drawing.Size(102, 13);
             this.labelFrequency.TabIndex = 6;
             this.labelFrequency.Text = "Частота поставок:";
             // 
-            // userControlListManagerName
-            // 
-            this.userControlListManagerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.userControlListManagerName.Location = new System.Drawing.Point(12, 169);
-            this.userControlListManagerName.Name = "userControlListManagerName";
-            this.userControlListManagerName.SelectedItem = null;
-            this.userControlListManagerName.Size = new System.Drawing.Size(253, 183);
-            this.userControlListManagerName.TabIndex = 7;
-            // 
             // labelManagerName
             // 
-            this.labelManagerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelManagerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelManagerName.AutoSize = true;
-            this.labelManagerName.Location = new System.Drawing.Point(12, 150);
+            this.labelManagerName.Location = new System.Drawing.Point(12, 230);
             this.labelManagerName.Name = "labelManagerName";
             this.labelManagerName.Size = new System.Drawing.Size(98, 13);
             this.labelManagerName.TabIndex = 8;
@@ -126,7 +128,7 @@
             // buttonSave
             // 
             this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.buttonSave.Location = new System.Drawing.Point(12, 441);
+            this.buttonSave.Location = new System.Drawing.Point(12, 477);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 9;
@@ -137,7 +139,7 @@
             // buttonExit
             // 
             this.buttonExit.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonExit.Location = new System.Drawing.Point(190, 441);
+            this.buttonExit.Location = new System.Drawing.Point(229, 477);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(75, 23);
             this.buttonExit.TabIndex = 10;
@@ -145,11 +147,58 @@
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
+            // listBoxDates
+            // 
+            this.listBoxDates.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxDates.FormattingEnabled = true;
+            this.listBoxDates.Location = new System.Drawing.Point(12, 113);
+            this.listBoxDates.Name = "listBoxDates";
+            this.listBoxDates.Size = new System.Drawing.Size(235, 108);
+            this.listBoxDates.TabIndex = 11;
+            // 
+            // buttonAddDate
+            // 
+            this.buttonAddDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddDate.Location = new System.Drawing.Point(253, 113);
+            this.buttonAddDate.Name = "buttonAddDate";
+            this.buttonAddDate.Size = new System.Drawing.Size(66, 20);
+            this.buttonAddDate.TabIndex = 12;
+            this.buttonAddDate.Text = "Добавить";
+            this.buttonAddDate.UseVisualStyleBackColor = true;
+            this.buttonAddDate.Click += new System.EventHandler(this.buttonAddDate_Click);
+            // 
+            // userControlListManagerName
+            // 
+            this.userControlListManagerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControlListManagerName.Location = new System.Drawing.Point(12, 249);
+            this.userControlListManagerName.Name = "userControlListManagerName";
+            this.userControlListManagerName.SelectedItem = null;
+            this.userControlListManagerName.Size = new System.Drawing.Size(292, 183);
+            this.userControlListManagerName.TabIndex = 7;
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClear.Location = new System.Drawing.Point(253, 190);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(66, 20);
+            this.buttonClear.TabIndex = 13;
+            this.buttonClear.Text = "Очистить";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
             // FormSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 476);
+            this.ClientSize = new System.Drawing.Size(323, 518);
+            this.Controls.Add(this.buttonClear);
+            this.Controls.Add(this.buttonAddDate);
+            this.Controls.Add(this.listBoxDates);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.labelManagerName);
@@ -181,5 +230,8 @@
         private System.Windows.Forms.Label labelManagerName;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.ListBox listBoxDates;
+        private System.Windows.Forms.Button buttonAddDate;
+        private System.Windows.Forms.Button buttonClear;
     }
 }

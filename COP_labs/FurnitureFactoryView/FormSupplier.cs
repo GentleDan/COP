@@ -2,6 +2,7 @@
 using FurnitureFactoryBusinessLogic.BusinessLogic;
 using FurnitureFactoryBusinessLogic.HelperModels;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Unity;
@@ -38,10 +39,15 @@ namespace FurnitureFactoryView
                     var id = Convert.ToInt32(_view.Id);
                     var item = _logic.Read(new SupplierBindingModel { Id = id })?[0];
                     if (item is null) return;
+                    string[] bufferArray = new string[item.DeliveryDate.Count];
+                    for(int i = 0; i < item.DeliveryDate.Count; i++)
+                    {
+                        bufferArray[i] = item.DeliveryDate[i].ToString();
+                    }
                     textBoxName.Text = item.Name;
-                    dateTimePickerDelivery.Text = item.DeliveryDate;
                     userControlListManagerName.SelectedItem = item.ManagerFullName;
                     inputUserControlFrequency.Value = item.DeliveryFrequency;
+                    listBoxDates.Items.AddRange(bufferArray);
                 }
                 catch (Exception ex)
                 {
@@ -57,6 +63,7 @@ namespace FurnitureFactoryView
         {
             var name = textBoxName.Text;
             var managerName = userControlListManagerName.SelectedItem;
+            
             if (string.IsNullOrEmpty(name))
             {
                 MessageBox.Show("Заполните название", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -78,17 +85,6 @@ namespace FurnitureFactoryView
                     MessageBoxIcon.Error);
                 return;
             }
-            DateTime deliveryDate;
-            try
-            {
-                deliveryDate = dateTimePickerDelivery.Value;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
-            }
             try
             {
                 int? id = null;
@@ -96,12 +92,17 @@ namespace FurnitureFactoryView
                 {
                     id = Convert.ToInt32(_view.Id);
                 }
+                List<DateTime> bufferList = new List<DateTime>();
+                foreach(var item in listBoxDates.Items)
+                {
+                    bufferList.Add(DateTime.Parse(item.ToString()));
+                }
                 _logic.CreateOrUpdate(new SupplierBindingModel
                 {
                     Id = id,
                     Name = name,
-                    DeliveryDate = deliveryDate,
                     ManagerFullName = managerName,
+                    DeliveryDate = bufferList,
                     DeliveryFrequency = deliveryFrequency
                 });
             }
@@ -153,6 +154,16 @@ namespace FurnitureFactoryView
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void buttonAddDate_Click(object sender, EventArgs e)
+        {
+            listBoxDates.Items.Add(dateTimePickerDelivery.Value.ToString());
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            listBoxDates.Items.Clear();
         }
     }
 }

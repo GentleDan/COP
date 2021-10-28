@@ -8,8 +8,8 @@ namespace FurnitureFactoryBusinessLogic.BindingModels
     {
         public int? Id { get; set; }
         public string Name { get; set; }
-        public DateTime DeliveryDate { get; set; }
         public string ManagerFullName { get; set; }
+        public List<DateTime> DeliveryDate { get; set; }
         public int DeliveryFrequency { get; set; }
     }
 }

@@ -20,7 +20,8 @@ namespace FurnitureFactoryDatabaseImplement.Implements
                     Id = rec.Id,
                     Name = rec.Name,
                     ManagerFullName = rec.ManagerFullName,
-                    DeliveryDate = rec.DeliveryDate.ToString("dd.MM.yyyy"),
+                    DeliveryDate = context.SupplierDates
+                    .Where(x => rec.Id == x.SupplierId).Select(y => y.DeliveryDate).ToList(),
                     DeliveryFrequency = rec.DeliveryFrequency,
                 })
                 .ToList();
@@ -42,7 +43,8 @@ namespace FurnitureFactoryDatabaseImplement.Implements
                     Id = rec.Id,
                     Name = rec.Name,
                     ManagerFullName = rec.ManagerFullName,
-                    DeliveryDate = rec.DeliveryDate.ToString("dd.MM.yyyy"),
+                    DeliveryDate = context.SupplierDates
+                    .Where(x => rec.Id == x.SupplierId).Select(y => y.DeliveryDate).ToList(),
                     DeliveryFrequency = rec.DeliveryFrequency
                 })
                 .ToList();
@@ -65,7 +67,8 @@ namespace FurnitureFactoryDatabaseImplement.Implements
                     Id = supplier.Id,
                     Name = supplier.Name,
                     ManagerFullName = supplier.ManagerFullName,
-                    DeliveryDate = supplier.DeliveryDate.ToString("dd.MM.yyyy"),
+                    DeliveryDate = context.SupplierDates
+                    .Where(x => supplier.Id == x.SupplierId).Select(y => y.DeliveryDate).ToList(),
                     DeliveryFrequency = supplier.DeliveryFrequency
                 };
             }
@@ -75,7 +78,14 @@ namespace FurnitureFactoryDatabaseImplement.Implements
         {
             using (var context = new FurnitureFactoryDatabase())
             {
-                context.Suppliers.Add(CreateModel(model, new Supplier()));
+                var supplier = CreateModel(model, new Supplier());
+                context.Suppliers.Add(supplier);
+                context.SaveChanges();
+                if (model.DeliveryDate != null)
+                {
+                    context.SupplierDates.AddRange(model.DeliveryDate.Select(x => new SupplierDates
+                    { SupplierId = supplier.Id, DeliveryDate = x }).ToList());
+                }
                 context.SaveChanges();
             }
         }
@@ -85,14 +95,22 @@ namespace FurnitureFactoryDatabaseImplement.Implements
             using (var context = new FurnitureFactoryDatabase())
             {
                 var supplier = context.Suppliers.FirstOrDefault(rec => rec.Id == model.Id);
+
                 if (supplier is null)
                 {
                     throw new Exception("Поставщик не найден");
                 }
                 CreateModel(model, supplier);
+                context.SupplierDates
+                  .RemoveRange(context.SupplierDates
+                  .Where(rec => rec.SupplierId == model.Id).ToList());
+                if (model.DeliveryDate != null && model.DeliveryDate.Count > 0)
+                    context.SupplierDates.AddRange(model.DeliveryDate.Select(x => new SupplierDates
+                { SupplierId = (int) model.Id, DeliveryDate = x }).ToList());
                 context.SaveChanges();
             }
         }
+
 
         public void Delete(SupplierBindingModel model)
         {
@@ -105,6 +123,9 @@ namespace FurnitureFactoryDatabaseImplement.Implements
                 }
 
                 context.Suppliers.Remove(supplier);
+                context.SupplierDates
+                 .RemoveRange(context.SupplierDates
+                 .Where(rec => rec.SupplierId == model.Id).ToList());
                 context.SaveChanges();
             }
         }
@@ -113,7 +134,6 @@ namespace FurnitureFactoryDatabaseImplement.Implements
         {
             supplier.Name = model.Name;
             supplier.ManagerFullName = model.ManagerFullName;
-            supplier.DeliveryDate = model.DeliveryDate;
             supplier.DeliveryFrequency = model.DeliveryFrequency;
             return supplier;
         }

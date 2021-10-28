@@ -19,7 +19,7 @@ namespace FurnitureFactoryView
         {
             EndSign = '}',
             StartSign = '{',
-            Layout = "Название - {Name}; Идентификатор - {Id}; Дата поставки - {DeliveryDate}; ФИО менеджера - {ManagerFullName}; Частота поставок - {DeliveryFrequency}"
+            Layout = "Название - {Name}; Идентификатор - {Id}; ФИО менеджера - {ManagerFullName}; Частота поставок - {DeliveryFrequency}"
         };
 
         public FormMain(SupplierLogic supplierLogic, ReportLogic reportLogic)
