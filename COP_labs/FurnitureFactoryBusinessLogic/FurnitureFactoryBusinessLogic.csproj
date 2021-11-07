@@ -5,6 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="ClassLibraryComponentsFilippov">
+      <HintPath>..\AnotherComponents\ClassLibraryComponentsFilippov.dll</HintPath>
+    </Reference>
     <Reference Include="ComponentLibrary">
       <HintPath>..\AnotherComponents\ComponentLibrary.dll</HintPath>
     </Reference>

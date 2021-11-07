@@ -17,6 +17,10 @@ namespace FurnitureFactoryView
         private readonly SupplierLogic _logic;
         private readonly ManagerLogic _managerLogic;
         private SupplierStringModel _view;
+        public string Name { get; set; }
+        public string ManagerFullName { get; set; }
+        public int DeliveryFrequency { get; set; }
+        public DateTime? DeliveryDate { get; set; }
         private bool Save { get; set; } = false;
 
         public FormSupplier(SupplierLogic logic, ManagerLogic managerLogic)
@@ -56,6 +60,10 @@ namespace FurnitureFactoryView
                     return;
                 }
             }
+            Name = textBoxName.Text;
+            ManagerFullName = userControlListManagerName.SelectedItem;
+            DeliveryFrequency = (int) inputUserControlFrequency.Value;
+            DeliveryDate = dateTimePickerDelivery.Value;
         }
 
 
@@ -74,7 +82,7 @@ namespace FurnitureFactoryView
                 MessageBox.Show("Выберите менеджера", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            int deliveryFrequency;
+            int deliveryFrequency = 1;
             try
             {
                 deliveryFrequency = (int)inputUserControlFrequency.Value;
@@ -85,6 +93,7 @@ namespace FurnitureFactoryView
                     MessageBoxIcon.Error);
                 return;
             }
+
             try
             {
                 int? id = null;
@@ -123,20 +132,23 @@ namespace FurnitureFactoryView
             bool result = true;
             if (Save) return result;
             var name = textBoxName.Text;
-            var deliveryDate = dateTimePickerDelivery.Text;
+            var deliveryDate = dateTimePickerDelivery.Value;
             var managerName = userControlListManagerName.SelectedItem;
-            int deliveryFrequency;
+            int deliveryFrequency = 1;
             try
             {
                 deliveryFrequency = (int) inputUserControlFrequency.Value;
             }
             catch (Exception)
             { }
-            if (MessageBox.Show("Данные не сохранены", "Выйти?", MessageBoxButtons.YesNo,
+            if (!CheckData(name, managerName, deliveryFrequency, deliveryDate))
+            {
+                if (MessageBox.Show("Данные не сохранены", "Выйти?", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) != DialogResult.Yes)
                 {
                     result = false;
                 }
+            }
             return result;
         }
 
@@ -164,6 +176,13 @@ namespace FurnitureFactoryView
         private void buttonClear_Click(object sender, EventArgs e)
         {
             listBoxDates.Items.Clear();
+        }
+        public bool CheckData(string name, string managerFullName, int deliveryFrequency, DateTime? deliveryDate)
+        {
+            return name.Equals(Name)
+                && managerFullName.Equals(ManagerFullName)
+                && deliveryFrequency.Equals(DeliveryFrequency)
+                && DeliveryDate.Equals(deliveryDate);
         }
     }
 }

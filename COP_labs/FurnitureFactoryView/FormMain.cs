@@ -1,8 +1,12 @@
-﻿using ClassLibraryControlsFilippov;
+﻿using ClassLibraryComponentsFilippov.HelperModels;
+using ClassLibraryControlsFilippov;
+using ComponentLibrary;
+using ComponentLibrary.models;
 using FurnitureFactoryBusinessLogic.BindingModels;
 using FurnitureFactoryBusinessLogic.BusinessLogic;
 using FurnitureFactoryBusinessLogic.HelperModels;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Unity;
@@ -120,20 +124,89 @@ namespace FurnitureFactoryView
 
         private void CreateSimpleDocument(object sender, EventArgs e)
         {
+            var sfd = new SaveFileDialog();
+            sfd.Filter = "xlsx file | *.xlsx";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                if (string.IsNullOrEmpty(sfd.FileName))
+                {
+                    MessageBox.Show("Путь не указан", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
+                if (componentExcelTables.CreateDoc(new WindowsFormsComponentLibrary.Models.ExcelInfo
+                { FileName = sfd.FileName, Data = _reportLogic.GetArraySuppliersDeliveryDates(), Title = "Отчет по поставщикам с датами" }))
+                {
+                    MessageBox.Show("Файл создан успешно", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Произошла непредвиденная ошибка", "Не успех", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void CreateDocumentTable(object sender, EventArgs e)
         {
+            var sfd = new SaveFileDialog();
+            sfd.Filter = "doc file | *.doc";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                if (string.IsNullOrEmpty(sfd.FileName))
+                {
+                    MessageBox.Show("Путь не указан", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                DocWithTable doc = new DocWithTable();
+                var headers = new List<TableHeaderRowInfo>
+            {
+                new TableHeaderRowInfo("Идентификатор", 500, "Id"),
+                new TableHeaderRowInfo("Название", 1000, "Name"),
+                new TableHeaderRowInfo("ФИО менеджера", 1000, "ManagerFullName"),
+                new TableHeaderRowInfo("Частота поставок в году", 500, "DeliveryFrequency")
+            };
 
+                var groups = new List<GroupInfo>
+            {
+                new GroupInfo("Сводка", 2, 3)
+            };
+
+                var items = _reportLogic.GetSuppliers().Select(x => new TableViewModel { Id = x.Id.ToString(), Name = x.Name, DeliveryFrequency = x.DeliveryFrequency.ToString(), ManagerFullName = x.ManagerFullName }).ToList();
+
+                var tableInfo = new TableInfo<TableViewModel>
+                {
+                    FilePath = sfd.FileName,
+                    Header = "Отчет по поставщикам",
+                    HeaderInfoList = headers,
+                    GroupInfoList = groups,
+                    Items = items
+                };
+                doc.GenerateDoc(tableInfo);
+                MessageBox.Show("Файл создан успешно", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void CreateDocumentChart(object sender, EventArgs e)
         {
+            var sfd = new SaveFileDialog();
+            sfd.Filter = "pdf file | *.pdf";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                if (string.IsNullOrEmpty(sfd.FileName))
+                {
+                    MessageBox.Show("Путь не указан", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                if (componentDiagramPdf.CreateDocument(new DiagramPdfParameters
+                { Series = _reportLogic.GetManagersFrequency(), ChartAreaLegend = ClassLibraryComponentsFilippov.Enums.ChartAreaLegend.Right, DiagramName = "Частота поставок", Path = sfd.FileName, Title = "Частота поставок по менеджерам", XAxisValues = _reportLogic.GetCount() }))
+                {
+                    MessageBox.Show("Файл создан успешно", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Произошла непредвиденная ошибка", "Не успех", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
         }
-
-
     }
 }
 
