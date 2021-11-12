@@ -87,9 +87,9 @@ namespace FurnitureFactoryView
             {
                 deliveryFrequency = (int)inputUserControlFrequency.Value;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                MessageBox.Show("Введите целое число от 1 до 12", "Ошибка", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
             }

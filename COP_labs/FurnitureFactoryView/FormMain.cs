@@ -36,6 +36,8 @@ namespace FurnitureFactoryView
         private void FormMain_Load(object sender, EventArgs e)
         {
             LoadData();
+            string VoroninaShalava = "+";
+            Console.WriteLine(VoroninaShalava);
         }
 
         private void LoadData()
