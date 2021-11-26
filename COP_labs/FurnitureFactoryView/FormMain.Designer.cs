@@ -41,6 +41,7 @@
             this.создатьДокументСДиаграммойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.componentExcelTables = new WindowsFormsComponentLibrary.ComponentExcelTables(this.components);
             this.docWithTable = new ComponentLibrary.DocWithTable();
+            this.плагинОтчетаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,9 +64,10 @@
             this.менеджерыToolStripMenuItem,
             this.создатьПростойДокументToolStripMenuItem,
             this.создатьДокументСТаблицейToolStripMenuItem,
-            this.создатьДокументСДиаграммойToolStripMenuItem});
+            this.создатьДокументСДиаграммойToolStripMenuItem,
+            this.плагинОтчетаToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(296, 158);
+            this.contextMenuStrip.Size = new System.Drawing.Size(296, 202);
             // 
             // добавитьToolStripMenuItem
             // 
@@ -122,6 +124,13 @@
             this.создатьДокументСДиаграммойToolStripMenuItem.Text = "Создать документ с диаграммой";
             this.создатьДокументСДиаграммойToolStripMenuItem.Click += new System.EventHandler(this.CreateDocumentChart);
             // 
+            // плагинОтчетаToolStripMenuItem
+            // 
+            this.плагинОтчетаToolStripMenuItem.Name = "плагинОтчетаToolStripMenuItem";
+            this.плагинОтчетаToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.плагинОтчетаToolStripMenuItem.Text = "Плагин отчета";
+            this.плагинОтчетаToolStripMenuItem.Click += new System.EventHandler(this.OpenExcelreportForm);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,6 +160,7 @@
         private System.Windows.Forms.ToolStripMenuItem создатьДокументСДиаграммойToolStripMenuItem;
         private WindowsFormsComponentLibrary.ComponentExcelTables componentExcelTables;
         private ComponentLibrary.DocWithTable docWithTable;
+        private System.Windows.Forms.ToolStripMenuItem плагинОтчетаToolStripMenuItem;
     }
 }
 

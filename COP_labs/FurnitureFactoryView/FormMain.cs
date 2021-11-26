@@ -36,8 +36,6 @@ namespace FurnitureFactoryView
         private void FormMain_Load(object sender, EventArgs e)
         {
             LoadData();
-            string VoroninaShalava = "+";
-            Console.WriteLine(VoroninaShalava);
         }
 
         private void LoadData()
@@ -121,6 +119,12 @@ namespace FurnitureFactoryView
         private void OpenManagersForm(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormManagers>();
+            form.ShowDialog();
+        }
+
+        private void OpenExcelreportForm(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReport>();
             form.ShowDialog();
         }
 

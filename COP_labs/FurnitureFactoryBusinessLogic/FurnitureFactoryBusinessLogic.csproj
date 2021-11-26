@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Composition" Version="16.9.20" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="ClassLibraryComponentsFilippov">
       <HintPath>..\AnotherComponents\ClassLibraryComponentsFilippov.dll</HintPath>
     </Reference>

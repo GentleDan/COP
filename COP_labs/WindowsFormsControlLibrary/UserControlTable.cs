@@ -19,16 +19,6 @@ namespace WindowsFormsControlLibrary
             InitializeComponent();
         }
 
-        public void SetColumns(List<ColumnProperty> properties)
-        {
-            foreach (var column in properties)
-            {
-                int index = dataGridView.Columns.Add(column.PropertyName, column.Header);
-                dataGridView.Columns[index].Visible = column.Visible;
-                dataGridView.Columns[index].Width = column.Width;
-            }
-        }
-
         public void Clear()
         {
             dataGridView.Rows.Clear();
