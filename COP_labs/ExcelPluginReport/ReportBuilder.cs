@@ -28,6 +28,7 @@ namespace ExcelPluginReport
         }
         public void AddChart(ChartConfigModel config)
         {
+            OpenFile();
             Chart excelchart = (Chart)excel.Charts.Add(Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             excelchart.Activate();
             excelchart.Select(Type.Missing);
@@ -54,11 +55,13 @@ namespace ExcelPluginReport
 
         public void AddImage(ImageConfigModel config)
         {
+            OpenFile();
             sheet.Shapes.AddPicture(config.Path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, config.Coordinates[0], config.Coordinates[1], config.Coordinates[2], config.Coordinates[3]);
         }
 
         public void AddParagraph(ParagraphConfigModel config)
         {
+            OpenFile();
             Excel.Range range = sheet.get_Range("A1", "A1");
             range.Cells.Font.Name = config.Font;
             range.Font.Bold = config.Bold;
@@ -68,6 +71,7 @@ namespace ExcelPluginReport
 
         public void AddTable(TableConfigModel config)
         {
+            OpenFile();
             sheet.Cells[3, 1] = config.TitleName;
             int index = 4;
             foreach (var element in config.Text)
@@ -83,6 +87,7 @@ namespace ExcelPluginReport
 
         public void SaveDocument(string filepath)
         {
+            OpenFile();
             excel.Application.ActiveWorkbook.SaveAs(filepath, XlSaveAsAccessMode.xlNoChange);
             excel.Quit();
         }

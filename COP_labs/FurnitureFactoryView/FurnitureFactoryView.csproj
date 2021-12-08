@@ -286,6 +286,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ExcelPluginReport\ExcelPluginReport.csproj">
+      <Project>{14d61cba-028c-4252-8b61-86cbf25d2c2b}</Project>
+      <Name>ExcelPluginReport</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FurnitureFactoryBusinessLogic\FurnitureFactoryBusinessLogic.csproj">
       <Project>{ef2d67f6-d222-46fb-b286-d5ef2518177a}</Project>
       <Name>FurnitureFactoryBusinessLogic</Name>
@@ -293,6 +297,10 @@
     <ProjectReference Include="..\FurnitureFactoryDatabaseImplement\FurnitureFactoryDatabaseImplement.csproj">
       <Project>{4540b801-fe76-4cee-b426-4c1709207599}</Project>
       <Name>FurnitureFactoryDatabaseImplement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViberMessangerPlugin\ViberMessangerPlugin.csproj">
+      <Project>{a95a975f-52e2-4371-8e76-8c5701c763e7}</Project>
+      <Name>ViberMessangerPlugin</Name>
     </ProjectReference>
     <ProjectReference Include="..\WindowsFormsComponentLibrary\WindowsFormsComponentLibrary.csproj">
       <Project>{B7D4536C-4D1E-4981-AE62-2949531A8360}</Project>

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Unity;
+using ViberMessangerPlugin;
 
 namespace FurnitureFactoryView
 {
@@ -19,6 +20,7 @@ namespace FurnitureFactoryView
         public new IUnityContainer Container { get; set; }
         private readonly SupplierLogic _supplierLogic;
         private readonly ReportLogic _reportLogic;
+        private ViberPlugin vp;
         private readonly ControlOutputListBoxLayout layout = new ControlOutputListBoxLayout
         {
             EndSign = '}',
@@ -31,11 +33,15 @@ namespace FurnitureFactoryView
             InitializeComponent();
             _supplierLogic = supplierLogic;
             _reportLogic = reportLogic;
+            vp = new ViberPlugin();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
             LoadData();
+            vp.Init();
+            var jop = vp.GetAccountInfoAsync();
+            Console.WriteLine(jop.ToString());
         }
 
         private void LoadData()
@@ -124,8 +130,8 @@ namespace FurnitureFactoryView
 
         private void OpenExcelreportForm(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormReport>();
-            form.ShowDialog();
+           /* var form = new ExcelPluginReport.FormReport();
+            form.ShowDialog();*/
         }
 
         private void CreateSimpleDocument(object sender, EventArgs e)

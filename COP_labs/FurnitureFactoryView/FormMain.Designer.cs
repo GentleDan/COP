@@ -39,9 +39,10 @@
             this.создатьПростойДокументToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьДокументСТаблицейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьДокументСДиаграммойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.плагинОтчетаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.componentExcelTables = new WindowsFormsComponentLibrary.ComponentExcelTables(this.components);
             this.docWithTable = new ComponentLibrary.DocWithTable();
-            this.плагинОтчетаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.плагинМессенджераToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +66,8 @@
             this.создатьПростойДокументToolStripMenuItem,
             this.создатьДокументСТаблицейToolStripMenuItem,
             this.создатьДокументСДиаграммойToolStripMenuItem,
-            this.плагинОтчетаToolStripMenuItem});
+            this.плагинОтчетаToolStripMenuItem,
+            this.плагинМессенджераToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
             this.contextMenuStrip.Size = new System.Drawing.Size(296, 202);
             // 
@@ -131,6 +133,12 @@
             this.плагинОтчетаToolStripMenuItem.Text = "Плагин отчета";
             this.плагинОтчетаToolStripMenuItem.Click += new System.EventHandler(this.OpenExcelreportForm);
             // 
+            // плагинМессенджераToolStripMenuItem
+            // 
+            this.плагинМессенджераToolStripMenuItem.Name = "плагинМессенджераToolStripMenuItem";
+            this.плагинМессенджераToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.плагинМессенджераToolStripMenuItem.Text = "Плагин мессенджера";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +169,7 @@
         private WindowsFormsComponentLibrary.ComponentExcelTables componentExcelTables;
         private ComponentLibrary.DocWithTable docWithTable;
         private System.Windows.Forms.ToolStripMenuItem плагинОтчетаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem плагинМессенджераToolStripMenuItem;
     }
 }
 
