@@ -18,17 +18,15 @@ namespace ExcelPluginReport
         Application excel;
         Workbook workBook;
         Worksheet sheet;
-        public string PluginType => "Report";
-        public void OpenFile()
+        public string PluginType => "ExcelReport";
+        public void CreateDocument()
         {
             excel = new Application { SheetsInNewWorkbook = 1, Visible = false, DisplayAlerts = false };
             workBook = excel.Workbooks.Add(Type.Missing);
             sheet = (Worksheet)excel.Worksheets.get_Item(1);
-
         }
         public void AddChart(ChartConfigModel config)
         {
-            OpenFile();
             Chart excelchart = (Chart)excel.Charts.Add(Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             excelchart.Activate();
             excelchart.Select(Type.Missing);
@@ -55,14 +53,12 @@ namespace ExcelPluginReport
 
         public void AddImage(ImageConfigModel config)
         {
-            OpenFile();
             sheet.Shapes.AddPicture(config.Path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, config.Coordinates[0], config.Coordinates[1], config.Coordinates[2], config.Coordinates[3]);
         }
 
         public void AddParagraph(ParagraphConfigModel config)
         {
-            OpenFile();
-            Excel.Range range = sheet.get_Range("A1", "A1");
+            Range range = sheet.get_Range("A1", "A1");
             range.Cells.Font.Name = config.Font;
             range.Font.Bold = config.Bold;
             string text = config.Text.ToString();
@@ -71,7 +67,6 @@ namespace ExcelPluginReport
 
         public void AddTable(TableConfigModel config)
         {
-            OpenFile();
             sheet.Cells[3, 1] = config.TitleName;
             int index = 4;
             foreach (var element in config.Text)
@@ -86,8 +81,7 @@ namespace ExcelPluginReport
         }
 
         public void SaveDocument(string filepath)
-        {
-            OpenFile();
+        { 
             excel.Application.ActiveWorkbook.SaveAs(filepath, XlSaveAsAccessMode.xlNoChange);
             excel.Quit();
         }

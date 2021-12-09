@@ -20,17 +20,17 @@ namespace FurnitureFactoryView
         [Dependency]
         public new IUnityContainer Container { get; set; }
         private IReportPlugin _reporter;
-        private PluginExcelManager _manager;
-        public FormReport(PluginExcelManager manager)
+        private PluginReportManager _manager;
+        public FormReport(PluginReportManager manager)
         {
             _manager = manager;
             InitializeComponent();
-            _reporter = _manager.plugins["Report"];
         }
 
         private void buttonReport_Click(object sender, EventArgs e)
         {
-            _reporter.OpenFile();
+            _reporter = _manager.plugins[comboBoxPlugin.Text];
+            _reporter.CreateDocument();
             _reporter.AddParagraph(new ParagraphConfigModel()
             {
                 Bold = true,
@@ -74,6 +74,12 @@ namespace FurnitureFactoryView
                     MessageBox.Show(exception.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        private void FormReportPlugin_Load(object sender, EventArgs e)
+        {
+            if (_manager.Headers is null || _manager.Headers.Count.Equals(0)) return;
+            comboBoxPlugin.Items.AddRange(_manager.Headers.ToArray());
+            comboBoxPlugin.Text = comboBoxPlugin.Items[0].ToString();
         }
     }
 }

@@ -236,6 +236,12 @@
     <Compile Include="FormManagers.Designer.cs">
       <DependentUpon>FormManagers.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMessenger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMessenger.Designer.cs">
+      <DependentUpon>FormMessenger.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormManagers.resx">
       <DependentUpon>FormManagers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMessenger.resx">
+      <DependentUpon>FormMessenger.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReport.resx">
       <DependentUpon>FormReport.cs</DependentUpon>
@@ -298,9 +307,9 @@
       <Project>{4540b801-fe76-4cee-b426-4c1709207599}</Project>
       <Name>FurnitureFactoryDatabaseImplement</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ViberMessangerPlugin\ViberMessangerPlugin.csproj">
+    <ProjectReference Include="..\ViberMessangerPlugin\ViberMessengerPlugin.csproj">
       <Project>{a95a975f-52e2-4371-8e76-8c5701c763e7}</Project>
-      <Name>ViberMessangerPlugin</Name>
+      <Name>ViberMessengerPlugin</Name>
     </ProjectReference>
     <ProjectReference Include="..\WindowsFormsComponentLibrary\WindowsFormsComponentLibrary.csproj">
       <Project>{B7D4536C-4D1E-4981-AE62-2949531A8360}</Project>

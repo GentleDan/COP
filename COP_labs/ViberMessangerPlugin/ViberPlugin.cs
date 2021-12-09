@@ -1,33 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FurnitureFactoryBusinessLogic.PluginsLogic.Interfaces;
 using FurnitureFactoryBusinessLogic.PluginsLogic.HelperModels;
-using FurnitureFactoryBusinessLogic.Interfaces;
-using Viber.Bot;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace ViberMessangerPlugin
 {
-    public class ViberPlugin
-    {
-        private IViberBotClient viberBot;
+    [Export(typeof(IMessengerPlugin))]
+    public class ViberPlugin : IMessengerPlugin
+    {   
+        public string PluginType => "ViberMessenger";
 
-        private string authToken = "4e560020cfa7e1d1-4df7add43a4a5937-3ec7386734e452b4";
-        private string webhook = "aboba";
-        private string admionId = "ovbQi9yxJ+Jvb9yGw260dg==";
+        private List<(string, string)> some_errors = new List<(string, string)>();
 
-        public void Init()
+        public IEnumerable<(string Title, string Message)> Errors => some_errors;
+
+
+        public IEnumerable<(string Title, string Message)> Connect(SenderConfigurationModel config)
         {
-            viberBot = new ViberBotClient(authToken);
+            try
+            {
+                var form = new FormInfo(config);
+                form.ShowDialog();
+
+                if (form.DialogResult == DialogResult.OK)
+                {
+                    MessageBox.Show("Данные получены!", "Получеие данных", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                return null;
+            }
+            catch (Exception e)
+            {
+                some_errors.Add(("Ошибка", e.Message));
+
+                return null;
+            }
         }
 
-        public async Task<IAccountInfo> GetAccountInfoAsync()
+        public void SendMessage(SendMessageModel message)
         {
-            var result = await viberBot.GetAccountInfoAsync();
+            try
+            {
+                var form = new FormSendMessege(message);
+                form.ShowDialog();
 
-            return result;
-
+                if (form.DialogResult == DialogResult.OK)
+                {
+                    MessageBox.Show("Сообщение было успешно отправлено!", "Отправка сообщения", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                Console.WriteLine(message.Text);
+            }
+            catch (Exception e)
+            {
+                some_errors.Add(("Ошибка", e.Message));
+            }
         }
     }
 }

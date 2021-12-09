@@ -93,12 +93,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormReport.Designer.cs">
-      <DependentUpon>FormReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="ReportBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -113,11 +107,6 @@
       <Project>{ef2d67f6-d222-46fb-b286-d5ef2518177a}</Project>
       <Name>FurnitureFactoryBusinessLogic</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="FormReport.resx">
-      <DependentUpon>FormReport.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

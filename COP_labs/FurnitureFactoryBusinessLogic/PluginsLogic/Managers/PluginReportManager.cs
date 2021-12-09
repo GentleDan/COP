@@ -9,14 +9,14 @@ using FurnitureFactoryBusinessLogic.PluginsLogic.Interfaces;
 
 namespace FurnitureFactoryBusinessLogic.PluginsLogic.Managers
 {
-    public class PluginExcelManager
+    public class PluginReportManager
     {
         [ImportMany(typeof(IReportPlugin))]
         private List<IReportPlugin> Plugins { get; set; }
 
         public readonly Dictionary<string, IReportPlugin> plugins = new Dictionary<string, IReportPlugin>();
         public List<string> Headers { get; set; }
-        public PluginExcelManager()
+        public PluginReportManager()
         {
             AggregateCatalog catalog = new AggregateCatalog();
             var pa = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plugins");

@@ -8,7 +8,7 @@ namespace FurnitureFactoryBusinessLogic.PluginsLogic.Interfaces
     public interface IReportPlugin
     {
         string PluginType { get; }
-        //void OpenFile();
+        void CreateDocument();
         void SaveDocument(string filepath);
         void AddParagraph(ParagraphConfigModel config);
         void AddImage(ImageConfigModel config);

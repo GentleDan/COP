@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsControlLibrary", "WindowsFormsControlLibrary\WindowsFormsControlLibrary.csproj", "{B2F905C2-7B4A-4A79-9ED5-B0F0C82A44AE}"
 EndProject
@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureFactoryView", "Fur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelPluginReport", "ExcelPluginReport\ExcelPluginReport.csproj", "{14D61CBA-028C-4252-8B61-86CBF25D2C2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViberMessangerPlugin", "ViberMessangerPlugin\ViberMessangerPlugin.csproj", "{A95A975F-52E2-4371-8E76-8C5701C763E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViberMessengerPlugin", "ViberMessangerPlugin\ViberMessengerPlugin.csproj", "{A95A975F-52E2-4371-8E76-8C5701C763E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

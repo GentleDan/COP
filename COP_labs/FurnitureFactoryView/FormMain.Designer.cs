@@ -40,9 +40,9 @@
             this.создатьДокументСТаблицейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьДокументСДиаграммойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.плагинОтчетаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.плагинМессенджераToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.componentExcelTables = new WindowsFormsComponentLibrary.ComponentExcelTables(this.components);
             this.docWithTable = new ComponentLibrary.DocWithTable();
-            this.плагинМессенджераToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +69,7 @@
             this.плагинОтчетаToolStripMenuItem,
             this.плагинМессенджераToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(296, 202);
+            this.contextMenuStrip.Size = new System.Drawing.Size(296, 224);
             // 
             // добавитьToolStripMenuItem
             // 
@@ -138,6 +138,7 @@
             this.плагинМессенджераToolStripMenuItem.Name = "плагинМессенджераToolStripMenuItem";
             this.плагинМессенджераToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
             this.плагинМессенджераToolStripMenuItem.Text = "Плагин мессенджера";
+            this.плагинМессенджераToolStripMenuItem.Click += new System.EventHandler(this.OpenViberMessengerForm);
             // 
             // FormMain
             // 
