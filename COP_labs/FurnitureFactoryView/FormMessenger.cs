@@ -30,7 +30,7 @@ namespace FurnitureFactoryView
         private void buttonConnect_Click(object sender, EventArgs e)
         {
             _messenger = _manager.plugins[comboBoxPlugin.Text];
-            _messenger.Connect(new SenderConfigurationModel { AuthToken = "4e63c2204067d53d-e4fd7c979ddc0f3a-49441fdce80c1d02" });
+            _messenger.Connect(new SenderConfigurationModel());
         }
 
         private void FormReportPlugin_Load(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace FurnitureFactoryView
         private void buttonSendMessage_Click(object sender, EventArgs e)
         {
             _messenger = _manager.plugins[comboBoxPlugin.Text];
-            _messenger.SendMessage(new SendMessageModel { UserId = "gMCfMkwEiq1WeXXexUYdkQ==", Text = "Привет, красавчик!" });
+            _messenger.SendMessage(new SendMessageModel());
         }
     }
 }

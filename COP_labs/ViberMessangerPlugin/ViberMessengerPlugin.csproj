@@ -182,11 +182,13 @@
     <Compile Include="FormSendMessege.Designer.cs">
       <DependentUpon>FormSendMessege.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViberConfig.cs" />
     <Compile Include="ViberPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="config.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

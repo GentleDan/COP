@@ -8,6 +8,8 @@ using FurnitureFactoryBusinessLogic.PluginsLogic.Interfaces;
 using FurnitureFactoryBusinessLogic.PluginsLogic.HelperModels;
 using System.Drawing;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace ViberMessangerPlugin
 {
@@ -23,6 +25,8 @@ namespace ViberMessangerPlugin
 
         public IEnumerable<(string Title, string Message)> Connect(SenderConfigurationModel config)
         {
+            var data = JsonConvert.DeserializeObject<ViberConfig>(File.ReadAllText("config.json"));
+            config.AuthToken = data.authToken;
             try
             {
                 var form = new FormInfo(config);
@@ -45,6 +49,9 @@ namespace ViberMessangerPlugin
 
         public void SendMessage(SendMessageModel message)
         {
+            var data = JsonConvert.DeserializeObject<ViberConfig>(File.ReadAllText("config.json"));
+            message.UserId = data.adminId;
+            message.AuthToken = data.authToken;
             try
             {
                 var form = new FormSendMessege(message);

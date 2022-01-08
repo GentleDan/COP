@@ -12,13 +12,12 @@ namespace ViberMessangerPlugin
     public partial class FormSendMessege : Form
     {
         private ViberBotClient _viberBotClient;
-        string authToken = "4e63c2204067d53d-e4fd7c979ddc0f3a-49441fdce80c1d02";
         public FormSendMessege(SendMessageModel message)
         {
             InitializeComponent();
             textBoxReciever.Text = message.UserId;
             textBoxMessege.Text = message.Text;
-            _viberBotClient = new ViberBotClient(authToken);
+            _viberBotClient = new ViberBotClient(message.AuthToken);
         }
 
         public async Task SendTextMessageAsyncTest()
@@ -34,7 +33,6 @@ namespace ViberMessangerPlugin
             });
             return;
         }
-
         private void buttonSendMessege_Click(object sender, EventArgs e)
         {
            var result = SendTextMessageAsyncTest();
