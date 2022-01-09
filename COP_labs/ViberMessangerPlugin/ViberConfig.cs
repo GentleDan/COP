@@ -10,5 +10,6 @@ namespace ViberMessangerPlugin
     {
         public string adminId { get; set; }
         public string authToken { get; set; }
+        public string botName { get; set; }
     }
 }

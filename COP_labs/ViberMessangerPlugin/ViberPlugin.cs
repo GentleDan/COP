@@ -49,11 +49,12 @@ namespace ViberMessangerPlugin
 
         public void SendMessage(SendMessageModel message)
         {
-            var data = JsonConvert.DeserializeObject<ViberConfig>(File.ReadAllText("config.json"));
-            message.UserId = data.adminId;
-            message.AuthToken = data.authToken;
             try
             {
+                var data = JsonConvert.DeserializeObject<ViberConfig>(File.ReadAllText("config.json"));
+                message.UserId = data.adminId;
+                message.AuthToken = data.authToken;
+                message.BotName = data.botName;
                 var form = new FormSendMessege(message);
                 form.ShowDialog();
 

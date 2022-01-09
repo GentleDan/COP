@@ -9,5 +9,6 @@ namespace FurnitureFactoryBusinessLogic.PluginsLogic.HelperModels
         public string UserId { get; set; }
         public string AuthToken { get; set; }
         public string Text { get; set; }
+        public string BotName { get; set; }
     }
 }

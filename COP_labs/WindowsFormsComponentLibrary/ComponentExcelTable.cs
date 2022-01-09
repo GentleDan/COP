@@ -115,7 +115,7 @@ namespace WindowsFormsComponentLibrary
                 var propInfo = type.GetProperty(propertyOrder[i]);
                 if (propInfo == null)
                 {
-                    throw new Exception("У объекта нет свойсtва " + propertyOrder[i]);
+                    throw new Exception("У объекта нет свойства " + propertyOrder[i]);
                 }
                 propertyInGivenOrder.Add(propInfo);
             }
